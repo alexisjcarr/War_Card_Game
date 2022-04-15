@@ -52,13 +52,19 @@ class Game:
         else:
             print(f"\nCOMPUTER WINS!")
 
+
+    @staticmethod
+    def _generate_player_played_str(player_one_card: Card, player_two_card: Card) -> str:
+        player_one_play_str, player_two_play_str = f"\nYou play {player_one_card}!", f"Computer plays {player_two_card}!"
+
+        return player_one_play_str, player_two_play_str
+
     
     def play_turn(self) -> None:
         player_one_card, player_two_card = self.player_one.play_card(), self.player_two.play_card()
         winnings: List[Card] = [player_one_card, player_two_card]
 
-        player_one_play_str, player_two_play_str = f"\nYou play {player_one_card}!", f"Computer plays {player_two_card}!"
-
+        player_one_play_str, player_two_play_str = self._generate_player_played_str(player_one_card, player_two_card)
         print(player_one_play_str)
         print(player_two_play_str)
 
@@ -75,6 +81,7 @@ class Game:
             # add to winnings
             winnings.extend([*player_one_face_down_cards, *player_two_face_down_cards, player_one_card, player_two_card])
 
+            player_one_play_str, player_two_play_str = self._generate_player_played_str(player_one_card, player_two_card)
             print(player_one_play_str)
             print(player_two_play_str)
 
