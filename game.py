@@ -16,7 +16,7 @@ class Game:
         self._deal_cards_to_players()
 
 
-    def _deal_cards_to_players(self):
+    def _deal_cards_to_players(self) -> None:
         self.deck.shuffle_deck()
         
         self.player_one.cards.extend(self.deck.cards[:27])
@@ -54,7 +54,7 @@ class Game:
 
 
     @staticmethod
-    def _generate_player_played_str(player_one_card: Card, player_two_card: Card) -> str:
+    def _generate_player_played_str(player_one_card: Card, player_two_card: Card) -> Tuple[str, str]:
         player_one_play_str, player_two_play_str = f"\nYou play {player_one_card}!", f"Computer plays {player_two_card}!"
 
         return player_one_play_str, player_two_play_str
