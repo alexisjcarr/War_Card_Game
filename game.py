@@ -68,17 +68,14 @@ class Game:
         print(player_one_play_str)
         print(player_two_play_str)
 
+        # TODO: check if this logic can happen when one player is almost out of cards
         while player_one_card.value == player_two_card.value:
-
-            # 3 face down cards per player
             player_one_face_down_cards: List[Card] = [self.player_one.play_card() for _ in range(3)]
             player_two_face_down_cards: List[Card] = [self.player_two.play_card() for _ in range(3)]
 
-            # 1 fighting card
             player_one_card: Card = self.player_one.play_card()
             player_two_card: Card = self.player_two.play_card()
 
-            # add to winnings
             winnings.extend([*player_one_face_down_cards, *player_two_face_down_cards, player_one_card, player_two_card])
 
             player_one_play_str, player_two_play_str = self._generate_player_played_str(player_one_card, player_two_card)
