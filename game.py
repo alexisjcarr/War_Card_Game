@@ -101,10 +101,10 @@ if __name__ == '__main__':
 
     game = Game()
 
-    print("Hi welcome to War! Would you like to play this game in interactive mode? Y or N:     ")
+    print("Hi welcome to War! Would you like to play this game in interactive mode? [Enter] or N:     ")
     im = input()
 
-    interactive_mode = True if im.upper() == 'Y' else False
+    interactive_mode = False if im.upper() == 'N' else True
 
     while play_game:
         game.play_turn()
@@ -114,9 +114,9 @@ if __name__ == '__main__':
             play_game = False
 
         if interactive_mode:
-            print('\nPlay another turn? Y or N:   ')
+            print('\nPlay another turn? [Enter] or N:   ')
             play_again = input()
-            play_game = True if play_again.upper() == 'Y' else False
+            play_game = False if play_again.upper() == 'N' else True
 
         else:
             time.sleep(3.5)
